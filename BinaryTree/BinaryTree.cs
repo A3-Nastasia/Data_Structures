@@ -30,7 +30,6 @@ namespace BinaryTree
             return null;
         }
 
-
         public void insertNode(int nodeValue) => this.insertNode(this, nodeValue);
 
         private void insertNode(BinaryTreeNode parentNode, int nodeValue)
@@ -51,8 +50,6 @@ namespace BinaryTree
                     this.insertNode(parentNode.right, nodeValue);
             }
         }
-
-
 
         public void removeNode(int nodeValue) =>this.removeNode(nodeValue);
 
@@ -88,7 +85,6 @@ namespace BinaryTree
             node.left = removeMin(node.left);
             return node;
         }
-
 
         #region BFS
         public void traversalRecursive(BinaryTreeNode node)
@@ -202,7 +198,6 @@ namespace BinaryTree
             list.Add(node.nodeValue);
 
             InorderHelper(node.right, list);
-
         }
 
         public IList<int> InorderTraversal(BinaryTreeNode root)
@@ -216,9 +211,6 @@ namespace BinaryTree
 
             return list;
         }
-
-
-
 
         public int MinDepth(BinaryTreeNode root)
         {
@@ -250,8 +242,6 @@ namespace BinaryTree
             return depth;
         }
 
-
-
         public int MaxDepth(BinaryTreeNode root)
         {
             if (root == null)
@@ -282,7 +272,6 @@ namespace BinaryTree
         {
             if (root == null)
                 return false;
-            // return targetSum==0;
 
             targetSum -= root.nodeValue;
 
@@ -291,11 +280,6 @@ namespace BinaryTree
 
             return HasPathSum(root.left, targetSum) || HasPathSum(root.right, targetSum);
         }
-
-
-
-
-
 
         public IList<int> PreorderTraversal(BinaryTreeNode root)
         {
@@ -309,17 +293,6 @@ namespace BinaryTree
             }
             return list;
         }
-
-
-
-
-
-
-
-
-
-
-
 
         private void CountNodesHelper(BinaryTreeNode root, int count)
         {
@@ -413,10 +386,6 @@ namespace BinaryTree
             return InvertTreeHelper(root);
         }
 
-
-
-
-
         public int RangeSumBST(BinaryTreeNode root, int low, int high)
         {
             if (root == null)
@@ -442,70 +411,6 @@ namespace BinaryTree
             return sum;
         }
 
-
-
-
-
-
-
-        //public bool IsValidBST(BinaryTreeNode root)
-        //{
-        //    Queue<BinaryTreeNode> queue = new Queue<BinaryTreeNode>();
-        //    queue.Enqueue(root);
-
-        //    while (queue.Count > 0)
-        //    {
-        //        BinaryTreeNode current = queue.Dequeue();
-
-        //        // if(current.left.val>current.val || current.right.val<current.val)
-        //        //     return false;
-
-        //        if (current.left != null)
-        //            queue.Enqueue(current.left);
-        //        if (current.right != null)
-        //            queue.Enqueue(current.right);
-        //        if (current.left.nodeValue > current.nodeValue || current.right.nodeValue < current.nodeValue)
-        //            return false;
-
-
-        //    }
-
-        //    return true;
-        //}
-
-
-        //public bool IsValidBST(BinaryTreeNode root)
-        //{
-        //    if (root == null)
-        //        return true;
-
-        //    Queue<BinaryTreeNode> queue = new Queue<BinaryTreeNode>();
-        //    queue.Enqueue(root);
-
-        //    while (queue.Count > 0)
-        //    {
-        //        BinaryTreeNode current = queue.Dequeue();
-
-        //        if (current.left != null)
-        //        {
-        //            queue.Enqueue(current.left);
-
-        //            if (current.left.val > current.val)
-        //                return false;
-        //        }
-        //        if (current.right != null)
-        //        {
-        //            queue.Enqueue(current.right);
-
-        //            if (current.right.val < current.val)
-        //                return false;
-        //        }
-        //    }
-
-        //    return true;
-        //}
-
-
         public bool IsValidBST(BinaryTreeNode root)
         {
             return IsValidBSTHelper(root, null, null);
@@ -523,32 +428,6 @@ namespace BinaryTree
                    IsValidBSTHelper(root.right, root.nodeValue, max);
 
         }
-
-
-        //public BinaryTreeNode SortedArrayToBST(int[] nums)
-        //{
-        //    if (nums == null || nums.Length == 0)
-        //        return null;
-
-        //    return Converted(nums, 0, nums.Length - 1);
-        //}
-
-        //private BinaryTreeNode Converted(int[] nums, int left, int right)
-        //{
-        //    if (left > right)
-        //        return null;
-
-        //    int middle = left + (right - left) / 2;
-
-        //    BinaryTreeNode root = new BinaryTreeNode(nums[middle]);
-
-        //    root.left = Converted(nums, left, middle - 1);
-        //    root.right = Converted(nums, middle + 1, right);
-
-        //    return root;
-        //}
-
-
 
         public BinaryTreeNode SearchBST(BinaryTreeNode root, int val)
         {
@@ -575,17 +454,10 @@ namespace BinaryTree
     }
 
 
-
-
-
-
     class Program
     {
         static void Main(string[] args)
         {
-            //object[] arr = new object[] { 4, 2, 9, 3, 5, null, 7 };
-
-
             BinaryTreeNode tree = new BinaryTreeNode(null, 10);
             tree.insertNode(5);
             tree.insertNode(15);
@@ -594,19 +466,9 @@ namespace BinaryTree
             tree.insertNode(18);
             Console.WriteLine(tree.RangeSumBST(tree, 7, 15));
             Console.WriteLine(tree.IsValidBST(tree));
-            //tree.insertNode(15);
-            //tree.insertNode(9);
-            //tree.insertNode(5);
-            //tree.insertNode(8);
-            //tree.insertNode(10);
-            //tree.insertNode(1);
             tree.traversalRecursive(tree, " ", true);
 
             Console.WriteLine(tree.FindTilt(tree));
-            //Console.WriteLine(tree.CountNodes(tree));
-
-            //tree.traversalStack();
-            //tree.traversalQueue();
         }
     }
 }
